@@ -11,10 +11,11 @@
     </appender>
 
     <appender name="zigbee" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>f:/zigbeelog/zigbee.log</File>
+        <!--<File>f:/zigbeelog/zigbee.log</File>-->
+        <File>${CATALINA_HOME}/logs/zigbee.log</File>
         <!--<File>/developer/apache-tomcat-7.0.73/logs/mmall.log</File>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>f:/zigbeelog/zigbee.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${CATALINA_HOME}/logs/zigbee.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <append>true</append>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
@@ -25,10 +26,11 @@
 
 
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>f:/zigbeelog/error.log</File>
+        <!--<File>f:/zigbeelog/error.log</File>-->
+        <File>${CATALINA_HOME}/logs/zigbee_error.log</File>
         <!--<File>/developer/apache-tomcat-7.0.73/logs/error.log</File>-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>f:/zigbeelog/error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${CATALINA_HOME}/logs/zigbee_error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <append>true</append>
             <maxHistory>10</maxHistory>
         </rollingPolicy>

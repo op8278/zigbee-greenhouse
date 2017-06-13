@@ -1,90 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zigbee.dao.ZigbeeReceiveDataMapper" >
-  <resultMap id="BaseResultMap" type="com.zigbee.pojo.ZigbeeReceiveData" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="temperature" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="humidity" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.zigbee.dao.ZigbeeReceiveDataMapper">
+    <resultMap id="BaseResultMap" type="com.zigbee.pojo.ZigbeeReceiveData">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="temperature" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="humidity" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, temperature, humidity, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from zigbee_receive_data
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from zigbee_receive_data
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zigbee.pojo.ZigbeeReceiveData" >
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.zigbee.pojo.ZigbeeReceiveData">
     insert into zigbee_receive_data (id, temperature, humidity, 
       create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{temperature,jdbcType=VARCHAR}, #{humidity,jdbcType=VARCHAR}, 
       now(), now())
   </insert>
-  <insert id="insertSelective" parameterType="com.zigbee.pojo.ZigbeeReceiveData" >
-    insert into zigbee_receive_data
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="temperature != null" >
-        temperature,
-      </if>
-      <if test="humidity != null" >
-        humidity,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="temperature != null" >
-        #{temperature,jdbcType=VARCHAR},
-      </if>
-      <if test="humidity != null" >
-        #{humidity,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        now(),
-      </if>
-      <if test="updateTime != null" >
-        now(),
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zigbee.pojo.ZigbeeReceiveData" >
-    update zigbee_receive_data
-    <set >
-      <if test="temperature != null" >
-        temperature = #{temperature,jdbcType=VARCHAR},
-      </if>
-      <if test="humidity != null" >
-        humidity = #{humidity,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <!--<if test="updateTime != null" > -->
-        update_time = now(),
-      <!--</if>-->
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zigbee.pojo.ZigbeeReceiveData" >
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.zigbee.pojo.ZigbeeReceiveData">
+        insert into zigbee_receive_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="temperature != null">
+                temperature,
+            </if>
+            <if test="humidity != null">
+                humidity,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="temperature != null">
+                #{temperature,jdbcType=VARCHAR},
+            </if>
+            <if test="humidity != null">
+                #{humidity,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zigbee.pojo.ZigbeeReceiveData">
+        update zigbee_receive_data
+        <set>
+            <if test="temperature != null">
+                temperature = #{temperature,jdbcType=VARCHAR},
+            </if>
+            <if test="humidity != null">
+                humidity = #{humidity,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <!--<if test="updateTime != null" > -->
+            update_time = now(),
+            <!--</if>-->
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zigbee.pojo.ZigbeeReceiveData">
     update zigbee_receive_data
     set temperature = #{temperature,jdbcType=VARCHAR},
       humidity = #{humidity,jdbcType=VARCHAR},
@@ -92,11 +93,85 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getLastZigbeeData" resultMap="BaseResultMap"  >
-    select
-    <include refid="Base_Column_List" />
-    from zigbee_receive_data
-    order by id DESC
-    limit 1
-  </select>
+    <select id="getLastZigbeeData" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        order by id DESC
+        limit 1
+    </select>
+    <select id="getZigbeeData" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        <!--order by id ${orderBy} -->
+        <!-- 应该用${orderBy} 而不是 #{orderBy} 因为不需要#转义,直接$直接替换)-->
+    </select>
+    <select id="selectByTemperature" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        where temperature = #{temperature}
+    </select>
+    <select id="selectByHumidity" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        where humidity = #{humidity}
+    </select>
+    <select id="selectByTemperatureAndHumidity" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        <where>
+            <if test="temperature != null">
+                and temperature = #{temperature}
+            </if>
+            <if test="humidity != null">
+                and humidity = #{humidity}
+            </if>
+        </where>
+    </select>
+    <select id="selectByTemperatureRange" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        <where>
+            <if test="from != null and from!=''">
+                and temperature &gt;= ${from}
+                <!-- 注意要用 ${}  因为 #{} 自动加上单引号 就识别为字符串 -->
+            </if>
+            <if test="to != null and to!=''">
+                and temperature &lt;= ${to}
+            </if>
+        </where>
+    </select>
+    <select id="selectByHumidityRange" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        <where>
+            <if test="from != null and from!=''">
+                and humidity &gt;= ${from}
+                <!-- 注意要用 ${}  因为 #{} 自动加上单引号 就识别为字符串 -->
+            </if>
+            <if test="to != null and to!=''">
+                and humidity &lt;= ${to}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByDateRange" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from zigbee_receive_data
+        <where>
+            <if test="from != null and from!=''">
+                and create_time &gt;= '${from}'
+            </if>
+            <if test="to != null and to!=''">
+                and create_time &lt;= '${to}'
+            </if>
+        </where>
+    </select>
 </mapper>

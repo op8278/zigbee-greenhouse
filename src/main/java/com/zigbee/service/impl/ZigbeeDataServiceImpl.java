@@ -52,7 +52,7 @@ public class ZigbeeDataServiceImpl implements IZigbeeDataService {
     public ServerResponse<PageInfo> getZigbeeData(int pageNum, int pageSize, String orderBy) {
         //校验参数
         if (!(Const.ORDER_BY_ASC.equals(orderBy) || Const.ORDER_BY_DESC.equals(orderBy))) {
-            return ServerResponse.createByErrorMessage("orderBy参数错误");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),"orderBy参数错误");
         }
         //分页开始
         PageHelper.startPage(pageNum, pageSize);

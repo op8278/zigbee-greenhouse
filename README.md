@@ -2,7 +2,7 @@
 ### zigbee课程设计 大棚温湿度监控系统 Java服务端(为上位机提供接口API)  Spring+SpringMVC+Mybatis实现  
 
 ### 前端部分(Vue实现)  
-https://github.com/op8278/zigbee-greenhouse  
+https://github.com/op8278/zigbee-greenhouse-vue
 
 将 `\src\main\resources\applicationContext-datasource.xml` 里的mysql参数替换为自身的数据库信息  
 
